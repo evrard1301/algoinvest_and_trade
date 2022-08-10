@@ -1,0 +1,10 @@
+env
+__pycache__
+
+# LaTeX Stuff
+*.aux
+*.log
+*.out
+*.snm
+*.toc
+*.nav

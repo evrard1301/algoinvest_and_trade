@@ -1,0 +1,91 @@
+\begin{frame}{Présentation}
+
+  \begin{block}{Bérenger Ossété Gombé, 27 ans}
+    \begin{itemize}
+    \item Baccalauréat Scientifique (2013)
+    \item Maîtrise en informatique (2017)
+    \item Spécialisation web chez Openclassrooms (janvier 2022)
+    \end{itemize}
+  \end{block}
+  
+\end{frame}
+
+\begin{frame}{AlgoInvest \& Trade}
+  \begin{block}{Une société financière spécialisée dans l'investissement}
+    \begin{itemize}
+    \item Objectif $\rightarrow$ optimiser ses investissements à l'aide d'algorithmes
+    \end{itemize}
+
+    \begin{block}{Contraintes}
+      \begin{itemize}
+      \item Une action ne peut être achetée plusieurs fois.
+      \item Chaque opération d'achat est atomique.
+      \item La société ne peut dépenser plus de 500€ par client.
+      \end{itemize}
+    \end{block}
+  \end{block}
+\end{frame}
+
+
+\begin{frame}{Actions}
+  \begin{block}{Caractéristiques d'une action}
+    Une action $a$ est caractérisée par:
+    \begin{itemize}
+    \item Son nom $N(a)$ (exemple: Action-1)
+    \item Son coût $C(a)$ (exemple: 20€)
+    \item Son taux après deux ans $T(a)$ (exemple: 5\%)
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Bénéfices d'une action}
+    Après deux ans, le bénéfice d'une action $a$ est:
+    \begin{equation}
+      P(a) = C(a) \times T(a)
+    \end{equation}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Investissements et bénéfice}
+
+  \begin{block}{Investissement}
+    Un investissement est une liste d'actions à acheter à un client.
+  \end{block}
+  
+  \begin{block}{Bénéfice total}
+    Soit un investissement de taille $I$ tel que $|I| = N$ avec $N \ge 0$    
+    Le bénéfice pour AlgoInvest \& Trade est donc:
+
+    \begin{equation}
+      P(I) =
+      \begin{cases}
+        0, & N \le 0 \\
+        \sum _{k = 0}^{N - 1} cost_k \times rate_k, & \mbox{sinon}
+      \end{cases}      
+    \end{equation}
+
+    et le coût est:
+    
+    \begin{equation}
+      C(I) = 
+      \begin{cases}
+        0, & N \le 0 \\
+        {\sum_{k = 0}^{N - 1} cost_k}, & sinon
+      \end{cases}      
+    \end{equation}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Définition du problème}
+  Trouver le meilleur investissement possible étant donné une liste
+  d'actions.
+
+  \begin{block}{Entrée}
+    $A$ une liste d'actions.
+  \end{block}
+
+  \begin{block}{Sortie}
+    $I$ une liste d'actions $a_k \in A$ tel que $\sum_k P(a_k)$ soit maximale
+    et $\sum_k C(a_k) \le 500$.
+  \end{block}
+  
+\end{frame}
