@@ -38,10 +38,6 @@ class Solver:
                 if neighbor not in closed:
                     opened.append(neighbor)
                     
-        print('----------------')
-        print('->', len(self.find_best(closed).actions))
-        print(self.find_best(closed).info())
-
         return self.find_best(closed)
 
     def successor(self, state, ratio=0.0):
@@ -71,4 +67,5 @@ class Solver:
                 
         return best
 
-Solver(algo.actions).run()
+if __name__ == '__main__':
+    print(Solver(algo.actions).run().info())

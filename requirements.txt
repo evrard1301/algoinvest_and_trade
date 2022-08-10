@@ -9,8 +9,13 @@ parso==0.8.3
 Pillow==9.2.0
 pluggy==1.0.0
 pyparsing==3.0.9
+PyQt5==5.15.7
+PyQt5-Qt5==5.15.2
+PyQt5-sip==12.11.0
 python-dateutil==2.8.2
 python-lsp-jsonrpc==1.0.0
 python-lsp-server==1.5.0
 six==1.16.0
+tk==0.1.0
+tqdm==4.64.0
 ujson==5.4.0

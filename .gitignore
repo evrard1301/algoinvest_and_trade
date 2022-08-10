@@ -1,6 +1,6 @@
 env
 __pycache__
-
+perf.png
 # LaTeX Stuff
 *.aux
 *.log

@@ -20,6 +20,7 @@ def bruteforce(actions, current=[], cost=0, profit=0, solutions=[], index=0):
     
     return solutions
 
-solutions = bruteforce(algo.actions)
-solutions.sort(key=lambda s: s[2])
-print(str(solutions[-1]))
+if __name__ == '__main__':
+    solutions = bruteforce(algo.actions)
+    solutions.sort(key=lambda s: s[2])
+    print(str(solutions[-1]))
