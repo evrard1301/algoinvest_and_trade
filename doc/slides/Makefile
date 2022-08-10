@@ -9,7 +9,7 @@ report:
 	pdflatex report.tex
 
 clean:
-	rm -f *.aux *.log *.out *.snm *.toc *.nav
+	rm -f *.aux *.log *.out *.snm *.toc *.nav *.vrb
 
 mrproper: clean
 	rm -f *.pdf

@@ -1,3 +1,130 @@
-\begin{frame}
-  
+\begin{frame}{Une première solution}
+
+  \begin{block}{Une solution \textit{Bruteforce}}
+    La solution la plus simple est d'énumérer toutes les possibilités
+    puis de choisir la meilleure.
+  \end{block}
+
+  \begin{block}{Principe}
+    Générer \textbf{tout les investissements possibles} puis les trier
+    et enfin choisir le meilleur.
+  \end{block}
+
+  \begin{alertblock}{Attention}
+    Il faut générer les combinaisons et non pas les permutations.
+    Par exemple, $^{5}C_3 = 10$ et $^{5}P_3 = 60$.
+  \end{alertblock}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Algorithme de la solution naïve}
+  \begin{block}{Pseudo-Code}
+    \tiny
+    \begin{center}
+      \begin{lstlisting}
+        BRUTEFORCE(actions, current, cost, profit, solutions, index)
+
+          si cost <= 500
+            solutions = solutions (*$\cup$*) {(current, cost, profit)}
+          fin si
+
+          pour i de index a |actions|
+            bruteforce(actions \ actions[i],
+              current (*$\cup$*) {action},
+              cost + C(action),
+              profit + P(action),
+              solutions,
+              i)
+          fin pour
+
+          retourner solutions
+        FIN
+      \end{lstlisting}
+
+      Pour trouver le meilleur investissement:
+
+      \begin{lstlisting}
+        MEILLEUR-CHOIX(actions)
+          solutions = BRUTEFORCE(actions, (*$\emptyset$*), 0, 0, (*$\emptyset$*), 0)
+          TRI(solutions)
+          retourner DERNIER-ELEMENT(solutions)
+        FIN
+      \end{lstlisting}
+    \end{center}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Complexité asymptotique en temps de la solution naïve}
+
+  \begin{block}{Forme générale}
+    L'algorithme \textit{bruteforce} (BF) est récursif:
+    \begin{equation}
+      BF(n) = |actions| \times BF(n - 1) + \mathcal{O}(n)
+    \end{equation}
+  \end{block}
+
+  \begin{block}{Soit $TOTAL$ le nombre d'appels récursifs de \textit{bruteforce}}
+    $TOTAL = |actions| \times (|actions| - 1) \times (|actions| - 2) \times \cdots \times 1 = |actions|!$
+  \end{block}
+
+  \begin{block}{Par conséquent, nous avons:}
+    \begin{equation}
+      BRUTEFORCE = \mathcal{O}(n!)
+    \end{equation}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}{Complexité asymptotique: une seconde approche}
+  \begin{block}{}
+    Nous énumerons toutes les combinaisons d'actions possibles.  Pour
+    une entrée de $n = 20$ actions, nous avons $\binom{n}{k}$
+    solutions avec $k$ la taille de la sortie.
+  \end{block}
+
+  \begin{block}{}
+    \begin{equation}
+      \binom{n}{k} = \frac{n!}{(n - k)! \times k!}
+    \end{equation}
+
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Complexité asymptotique en mémoire de la solution naïve}
+  \begin{block}{Dans le pire cas:}
+    On ajoute au tableau de solutions une action à chaque itérations.
+    \begin{center}
+      \tiny
+      \begin{lstlisting}[numbers=none, frame=none]
+          si cost <= 500
+            solutions = solutions (*$\cup$*) {(*$\cdots$*)}
+          fin si
+      \end{lstlisting}
+    \end{center}
+  \end{block}
+
+  \begin{block}{Taille finale du tableau}
+    $|actions| \times (|actions| - k)\times \cdots \times 1 = |actions|!$.
+  \end{block}
+
+  \begin{block}{Conclusion:}
+    \begin{equation}
+      BRUTEFORCE = \mathcal{O}(n!)
+    \end{equation}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Conclusion de la solution naïve}
+  \begin{block}{Problèmes}
+    \begin{itemize}
+    \item $\mathcal{O}(n!)$ grandit bien trop vite.
+    \item On génère tout les cas, ce qui est efficace mais inefficient.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Conclusion}
+    $\rightarrow$ L'algorithme BRUTEFORCE n'est pas utilisable dans le
+    monde réel.
+  \end{block}
 \end{frame}

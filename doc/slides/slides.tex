@@ -1,8 +1,18 @@
 \documentclass{beamer}
 \usepackage[french]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{listings}
 
 \usetheme{Hannover}
+\lstset {
+  escapeinside={(*}{*)},
+  morekeywords={entrées, sorties, si, pour, de, fin, a, retourner},
+  keywordstyle=\color{blue},
+  numbers=left,
+  numbersep=-5pt,
+  numberstyle=\tiny,
+  frame=double
+}
 
 \title{Résolvez des problèmes en utilisant des algorithmes en python}
 \subtitle{Openclassrooms - Parcours Python - Projet n°7}
